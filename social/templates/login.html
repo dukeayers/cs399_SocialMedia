@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+<link href='http://fonts.googleapis.com/css?family=Lora:700' rel='stylesheet' type='text/css'>
+</head>
+<style>
+    body{
+        height: 100%;
+        width: 100%;
+    }
+    .custom-image{
+        position:absolute;
+        z-index:0;
+        height: 100%;
+        width:100%;
+        -webkit-filter: blur(3px)  grayscale(30%);
+        filter: blur(5px);
+    }
+    .loginForm{
+        border: 3px solid black;
+        background:rgba(236, 240, 241,.5);
+        padding:15px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 25px 15px #efefef;
+    }
+    .input-group{
+        margin-top:5px;
+    }
+    .social-group{
+        margin-top: 20px;
+margin-bottom: 10px;
+    }
+    .social-group img{
+        cursor:pointer;
+    }
+    .social-group img:hover{
+        border-radius:5px;
+        background:black;
+    }
+</style>
+<body>
+    <img src="{{ STATIC_URL }}login.jpg" class="img-responsive custom-image" style=""  alt=""/>
+        <div class="row">
+            <div class="col-xs-12" style="border-bottom: 1px solid black;">
+                            <div class="col-xs-6" >
+                <h2 style="color:white; margin-left:10px; font-family: 'Lora', serif;"> Vidya Book - The Gaming Social Media Platform</h2>
+            </div>
+            <div class="col-xs-6 ">
+                <div class="social-group pull-right">
+                    <img src="{{ STATIC_URL }}FACEBOOK.png" style="height:35px; width:35px;" alt=""/>
+                    <img src="{{ STATIC_URL }}INSTAGRAM.png" style="height:35px; width:35px;" alt=""/>
+                    <img src="{{ STATIC_URL }}TWITTER.png" style="height:35px; width:35px;" alt=""/>
+                    <img src="{{ STATIC_URL }}YOUTUBE.png" style="height:35px; width:35px;" alt=""/>
+                </div>
+            </div>
+            </div>
+
+        </div>
+    <div class="row">
+        <div class="col-xs-2 col-xs-offset-5 loginForm text-center">
+            <h3 style="margin-top:0;" class="text-center">Login</h3>
+            <form action="/" method="post" class="form-horizontal">
+                {% csrf_token %}
+                <span style="color:red; font-family: 'Lora', serif;">{{ error }}</span>
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
+                    {{ form.username}}
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
+                    {{ form.password}}
+                </div>
+                <button class="btn btn-success" style="margin-top:5px; width:45%;" type="submit"><span class="glyphicon glyphicon-ok"></span> Sign In</button>
+                <button class="btn btn-primary" style="margin-top:5px; width:45%;" type="submit"><span class="glyphicon glyphicon-pencil"></span> Register</button>
+
+            </form>
+        </div>
+    </div>
+            <div class="row">
+        <div class="col-xs-6 col-xs-offset-3 text-center" style="margin-top: 20px;">
+
+            <h4 style="color:white; font-family: 'Lora', serif;">The newest and easiest way to connect you with all things game-related.
+            Join thousands of other gamers within your community to explore new games, create new memories,
+            and forge mighty alliances.
+            </h4>
+        </div>
+    </div>
+
+
+</body>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script>
+    $(document).ready(function(){
+        var totalHeight = $(document).height();
+        var formHeight = $('.loginForm').height();
+        var expectedMargin = ((totalHeight)/4);
+
+        $('.loginForm').css('margin-top', expectedMargin);
+    })
+</script>
+</html>
