@@ -67,14 +67,16 @@ margin-bottom: 10px;
                 <span style="color:red; font-family: 'Lora', serif;">{{ error }}</span>
                 <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-user"></span></span>
-                    {{ form.username}}
+                    <input class="form-control" id="id_username" name="username" placeholder="Username" required="required" type="text">
+{#                    {{ form.username}}#}
                 </div>
                 <div class="input-group">
                     <span class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></span>
-                    {{ form.password}}
+                    <input class="form-control" id="id_password" name="password" placeholder="Password" required="required" type="password" >
+{#                    {{ form.password}}#}
                 </div>
                 <button class="btn btn-success" style="margin-top:5px; width:45%;" type="submit"><span class="glyphicon glyphicon-ok"></span> Sign In</button>
-                <button class="btn btn-primary" style="margin-top:5px; width:45%;" type="submit"><span class="glyphicon glyphicon-pencil"></span> Register</button>
+{#                <button class="btn btn-primary" style="margin-top:5px; width:45%;" type="submit"><span class="glyphicon glyphicon-pencil"></span> Register</button>#}
 
             </form>
         </div>
