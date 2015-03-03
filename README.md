@@ -18,6 +18,8 @@ After user post db is ready:
 
 - About page
 - Splash page (logout should redirect to splash page)
+- Create account page
+--- input account data into database
 - Optional: settings page
 
 Complete
