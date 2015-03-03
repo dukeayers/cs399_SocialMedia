@@ -30,6 +30,11 @@ def dashboard(request):
     else:
         return HttpResponseRedirect('/')
 
+def new_post(request):
+	if request.user.is_authenticated():
+		return render(request, "new_post.html")
+	else:
+		return HttpResponseRedirect('/')
 
 def logout_view(request):
     if request.user.is_authenticated():
@@ -37,4 +42,3 @@ def logout_view(request):
         return HttpResponseRedirect('/')
     else:
         return HttpResponseRedirect('/')
-# Create your views here.
