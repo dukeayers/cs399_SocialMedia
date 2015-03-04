@@ -6,22 +6,23 @@ To-Do
 -----
 - Nav-bar: Duke
 
-- User post database: Nancy
-After user post db is ready:
---- Lots of user post dummy data 
+--- Lots of user post dummy data in migrations
 --- New post page - takes what the user inputs and stores it in the database 
 --- Home page - random user posts generated here
---- User profile page - show all posts of the user sorted by date
 
 - Tag database - predefined allowable tags for user posts
 --- a way to search by tags
 
 - About page
-- Splash page (logout should redirect to splash page)
-- Create account page
+- Create new account page
 --- input account data into database
 - Optional: settings page
+
+
+- Optional: User profile page - show all posts of the user sorted by date
 
 Complete
 --------
 - User login system: Duke
+- Splash page: Duke
+- User post database and form: Nancy

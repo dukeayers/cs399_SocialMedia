@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-#from social.models import UserLogin
+from social.models import Content
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
@@ -26,7 +26,7 @@ def splash(request):
 
 def dashboard(request):
     if request.user.is_authenticated():
-        return render(request, "index.html")
+        return render(request, "index.html", {'posts': Content.objects.all()})
     else:
         return HttpResponseRedirect('/')
 
