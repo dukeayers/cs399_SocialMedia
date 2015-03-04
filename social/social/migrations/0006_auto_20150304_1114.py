@@ -23,7 +23,7 @@ class Migration(migrations.Migration):
         
         # a sample post to test the database
         Content = apps.get_model("social", "Content")
-        post = Content(url="http://shshatteredmemories.com/", description="lol!", userid=5, datetime="2003-08-04 12:30:45", image="http://i.imgur.com/6XI9cDR.jpg")
+        post = Content(url="http://shshatteredmemories.com/", description="lol!", username="nancy", datetime="2003-08-04 12:30:45", image="http://i.imgur.com/6XI9cDR.jpg")
         post.save()
 
     dependencies = [

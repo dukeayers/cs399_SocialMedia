@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(primary_key=True, verbose_name='ID', serialize=False, auto_created=True)),
                 ('url', models.URLField()),
                 ('description', models.TextField(max_length=200)),
-                ('userid', models.IntegerField()),
+                ('username', models.CharField(max_length=30)),
                 ('datetime', models.DateTimeField()),
                 ('image', models.URLField()),
             ],

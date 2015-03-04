@@ -7,7 +7,7 @@ from django import forms
 class Content(models.Model):
     url = models.URLField()
     description = models.TextField(max_length = 200)
-    userid = models.IntegerField()
+    username = models.CharField(max_length=30)
     datetime = models.DateTimeField()
     image = models.URLField()
 
@@ -15,8 +15,10 @@ class User_Content(ModelForm):
     url = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'required': 'required', 'placeholder': 'Website URL'}))
     description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'required': 'required', 'placeholder': 'Description'}))
     image = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'required': 'required', 'placeholder': 'Image URL'}))
+    datetime = forms.DateTimeField(widget=forms.HiddenInput())
+    username = forms.CharField(widget=forms.HiddenInput())
     class Meta:
         model = Content
-        fields = ['url', 'description', 'image']
+        fields = ['url', 'description', 'image', 'datetime', 'username']
         
         
