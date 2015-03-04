@@ -7,7 +7,7 @@ from django import forms
 class Content(models.Model):
     url = models.URLField()
     description = models.TextField(max_length = 200)
-    username = models.CharField(max_length = 30)
+    userid = models.IntegerField()
     datetime = models.DateTimeField()
     image = models.URLField()
 
