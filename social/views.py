@@ -26,7 +26,7 @@ def splash(request):
 
 def dashboard(request):
     if request.user.is_authenticated():
-        return render(request, "index.html", {'posts': Content.objects.all()})
+        return render(request, "index.html", {'posts': Content.objects.all(), 'currentUser': request.user.username})
     else:
         return HttpResponseRedirect('/')
 

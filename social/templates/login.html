@@ -1,9 +1,12 @@
-{%  extends "base.html" %}
-{% block css_links %}
-    <link href='http://fonts.googleapis.com/css?family=Lora:700' rel='stylesheet' type='text/css'>
-{% endblock %}
-
-{% block page_style %}
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css"/>
+<link href='http://fonts.googleapis.com/css?family=Lora:700' rel='stylesheet' type='text/css'>
+</head>
+<style>
     body{
         height: 100%;
         width: 100%;
@@ -37,9 +40,8 @@
         border-radius:5px;
         background:black;
     }
-{% endblock %}
-
-{% block content %}
+</style>
+<body>
     <img src="{{ STATIC_URL }}login.jpg" class="img-responsive custom-image" style=""  alt=""/>
     <div class="row">
         <div class="col-xs-12" style="border-bottom: 1px solid black;">
@@ -87,14 +89,17 @@
             </h4>
         </div>
     </div>
-{% endblock %}
+</body>
+<script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+<script>
+$(document).ready(function(){
+    var totalHeight = $(document).height();
+    var formHeight = $('.loginForm').height();
+    var expectedMargin = ((totalHeight)/4);
 
-{% block js %}
-    $(document).ready(function(){
-        var totalHeight = $(document).height();
-        var formHeight = $('.loginForm').height();
-        var expectedMargin = ((totalHeight)/4);
-
-        $('.loginForm').css('margin-top', expectedMargin);
-    })
-{% endblock %}
+    $('.loginForm').css('margin-top', expectedMargin);
+});
+</script>
+</body>
+</html>
