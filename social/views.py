@@ -3,10 +3,11 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from social.models import Content
+from social.models import Content, User_Content
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from datetime import datetime
 def splash(request):
     error = ""
     if request.method == 'POST':
@@ -31,10 +32,24 @@ def dashboard(request):
         return HttpResponseRedirect('/')
 
 def new_post(request):
-	if request.user.is_authenticated():
-		return render(request, "new_post.html")
-	else:
-		return HttpResponseRedirect('/')
+    if request.user.is_authenticated():
+        if request.method == 'POST':
+            # we need to process data
+            form = User_Content(request.POST)
+            form.datetime = datetime.now()
+            form.username = request.user.username
+            if(form.is_valid()):
+                form.save(commit = True)
+                return HttpResponseRedirect('/dashboard')
+            else:
+                return render(request, 'new_post.html', {'form': form, 'currentUser': request.user.username})
+        else:
+            # create blank form
+            form = User_Content()
+            return render(request, 'new_post.html', {'form': form, 'currentUser': request.user.username})
+    else:
+        # they aren't logged in
+        return HttpResponseRedirect('/')    
 
 def logout_view(request):
     if request.user.is_authenticated():

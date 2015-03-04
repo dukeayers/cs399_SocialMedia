@@ -1,7 +1,32 @@
 {%  extends "base.html" %}
 {% block page_style %}
-
+{% block title %} New Post {% endblock %}
 {% endblock %}
 {% block content %}
-    <h2>User content input form</h2>
+
+
+    <div class="container" style="background:white; ">
+    <h2>New Post</h2>
+    <div class="row" style="padding-right:15px !important;">
+            <div class="col-xs-7 col-xs-offset-3 ">
+                <form action="" method="post" class="form-horizontal">
+                    {% csrf_token %}
+                    {{ form }}
+                    <br>
+                    <input type="submit" value="Post" class="btn btn-primary"/>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}
+
+
+{% block js %}
+	
+	$(document).ready(function() {
+		$(id_username).val( "test" );
+		$(id_datetime).val( "2003-08-04 12:30:45" );
+	});
+	
 {% endblock %}
