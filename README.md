@@ -4,6 +4,8 @@
 
 To-Do
 -----
+- base.html body : Tsosie / ktaed
+
 - New post page - takes what the user inputs and stores it in the database: Nancy 
 - Home page - random user posts generated here
 - Lots of user post dummy data
