@@ -14,8 +14,9 @@ class Content(models.Model):
 class User_Content(ModelForm):
     url = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'required': 'required', 'placeholder': 'Website URL'}))
     description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'required': 'required', 'placeholder': 'Description'}))
+    image = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'required': 'required', 'placeholder': 'Image URL'}))
     class Meta:
         model = Content
-        fields = ['url', 'description']
+        fields = ['url', 'description', 'image']
         
         
