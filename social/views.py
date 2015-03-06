@@ -57,3 +57,4 @@ def logout_view(request):
         return HttpResponseRedirect('/')
     else:
         return HttpResponseRedirect('/')
+
