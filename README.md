@@ -5,6 +5,7 @@
 To-Do
 -----
 - base.html body : Tsosie / ktaed
+--- footer with a copyright sentence and github link
 
 - Home page - random user posts generated here (currently just displays all posts in db)
 - Lots of user post dummy data
@@ -17,6 +18,7 @@ To-Do
 - Create new account page / Mohammad
 --- input account data into database
 - Settings page
+--- settings page needs to edit the database
 - User profile page - show all posts of the user sorted by date
 
 Complete
