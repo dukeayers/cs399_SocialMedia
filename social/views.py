@@ -7,7 +7,6 @@ from social.models import Content, User_Content
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
-from datetime import datetime
 def splash(request):
     error = ""
     if request.method == 'POST':
@@ -36,7 +35,6 @@ def new_post(request):
         if request.method == 'POST':
             # we need to process data
             form = User_Content(request.POST)
-            form.datetime = datetime.now()
             form.username = request.user.username
             if(form.is_valid()):
                 form.save(commit = True)
