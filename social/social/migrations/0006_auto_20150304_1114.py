@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.db import models, migrations
 from django.contrib.auth.models import User
-
+from datetime import datetime
 class Migration(migrations.Migration):
 
     def add_data(apps, schema_editor):
@@ -17,6 +17,11 @@ class Migration(migrations.Migration):
         user.last_name = "McCollough"
         user.save()
 
+        user = User.objects.create_user("ktaed", "ktaed@nau.edu", "password")
+        user.first_name = "Tsosie"
+        user.last_name = "Schneider"
+        user.save()
+
         user = User.objects.create_user("admin", "admin@vidyabook.com", "password")
         user.first_name = "Admin"
         user.save()
@@ -24,6 +29,9 @@ class Migration(migrations.Migration):
         # a sample post to test the database
         Content = apps.get_model("social", "Content")
         post = Content(url="http://shshatteredmemories.com/", description="lol!", username="nancy", datetime="2003-08-04 12:30:45", image="http://i.imgur.com/6XI9cDR.jpg")
+        post.save()
+        Content = apps.get_model("social", "Content")
+        post = Content(url="http://shshatteredmemories.com/", description="Lordy!", username="nancy", datetime=datetime.now(), image="http://i.imgur.com/6XI9cDR.jpg")
         post.save()
 
     dependencies = [
