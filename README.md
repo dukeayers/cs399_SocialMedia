@@ -6,15 +6,14 @@ To-Do
 -----
 - base.html body : Tsosie / ktaed
 
-- New post page - takes what the user inputs and stores it in the database: Nancy 
-- Home page - random user posts generated here
+- Home page - random user posts generated here (currently just displays all posts in db)
 - Lots of user post dummy data
 
 - Tag database - predefined allowable tags for user posts
 --- a way to search by tags
 --- when the user types in a tag, show a drop down of tag suggestions
 
-- About page
+- About page - Nancy
 - Create new account page / Mohammad
 --- input account data into database
 - Settings page
@@ -26,3 +25,4 @@ Complete
 - Splash page: Duke
 - User post database and form: Nancy
 - Nav-bar: Duke
+- New post page - takes what the user inputs and stores it in the database: Nancy 

@@ -25,7 +25,7 @@
 {% block js %}
 	
 	$(document).ready(function() {
-		$(id_username).val( "test" );
+		$(id_username).val( "{{ currentUser }}" );
 	});
 	
 {% endblock %}

@@ -35,7 +35,6 @@ def new_post(request):
         if request.method == 'POST':
             # we need to process data
             form = User_Content(request.POST)
-            form.username = request.user.username
             if(form.is_valid()):
                 form.save(commit = True)
                 return HttpResponseRedirect('/dashboard')
