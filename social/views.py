@@ -58,3 +58,6 @@ def logout_view(request):
     else:
         return HttpResponseRedirect('/')
 
+def signup(request):
+       return HttpResponseRedirect('/')
+
