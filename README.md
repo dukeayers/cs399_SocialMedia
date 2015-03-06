@@ -15,7 +15,7 @@ To-Do
 --- when the user types in a tag, show a drop down of tag suggestions
 
 - About page
-- Create new account page
+- Create new account page / Mohammad
 --- input account data into database
 - Settings page
 - User profile page - show all posts of the user sorted by date
