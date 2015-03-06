@@ -23,37 +23,28 @@ def splash(request):
             error="Username/Password is not valid."
     return render(request, 'login.html', {'error': error})
 
-
+@login_required(login_url='/')
 def dashboard(request):
-    if request.user.is_authenticated():
-        return render(request, "index.html", {'posts': Content.objects.all(), 'currentUser': request.user.username})
-    else:
-        return HttpResponseRedirect('/')
+    return render(request, "index.html", {'posts': Content.objects.all(), 'currentUser': request.user.username})
 
+@login_required(login_url='/')
 def new_post(request):
-    if request.user.is_authenticated():
-        if request.method == 'POST':
-            # we need to process data
-            form = User_Content(request.POST)
-            if(form.is_valid()):
-                form.save(commit = True)
-                return HttpResponseRedirect('/dashboard')
-            else:
-                return render(request, 'new_post.html', {'form': form, 'currentUser': request.user.username})
+    if request.method == 'POST':
+        # we need to process data
+        form = User_Content(request.POST)
+        if(form.is_valid()):
+            form.save(commit = True)
+            return HttpResponseRedirect('/dashboard')
         else:
-            # create blank form
-            form = User_Content()
             return render(request, 'new_post.html', {'form': form, 'currentUser': request.user.username})
     else:
-        # they aren't logged in
-        return HttpResponseRedirect('/')    
+        # create blank form
+        form = User_Content()
+        return render(request, 'new_post.html', {'form': form, 'currentUser': request.user.username})
 
 def logout_view(request):
-    if request.user.is_authenticated():
-        logout(request)
-        return HttpResponseRedirect('/')
-    else:
-        return HttpResponseRedirect('/')
+    logout(request)
+    return HttpResponseRedirect('/')
 
 def signup(request):
        return HttpResponseRedirect('/')
