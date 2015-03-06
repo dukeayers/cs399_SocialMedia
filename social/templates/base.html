@@ -37,8 +37,13 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
 
       <ul class="nav navbar-nav pull-right" >
-          <li><a style="cursor:default; color:white; padding-top:20px !important;">Welcome, {{ currentUser}}!</a></li>
-          <li><a href="/new" style="color:white !important; padding-top:20px !important;">New Post</a></li>
+          <li><a style="cursor:default; color:white; padding-top:20px !important;">
+		  {% if currentUser != '' %}
+			Welcome, {{ currentUser}}!
+		  {%endif%}
+		  </a></li>
+          
+		  <li><a href="/new" style="color:white !important; padding-top:20px !important;">New Post</a></li>
 		  <li class="dropdown">
           <a href="#" class="dropdown-toggle" id="navItemA" data-toggle="dropdown" role="button" aria-expanded="false" style="background:#2c3e50 !important;color:white !important; padding-top:20px !important;">Options <span class="caret"></span></a>
           <ul class="dropdown-menu" role="menu">

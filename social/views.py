@@ -47,5 +47,7 @@ def logout_view(request):
     return HttpResponseRedirect('/')
 
 def signup(request):
-       return HttpResponseRedirect('/')
+    return HttpResponseRedirect('/')
 
+def about(request):
+    return render(request, "about.html", {'currentUser': request.user.username})
