@@ -3,7 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from social.models import Content, User_Content
+from social.models import Content
+from social.forms import User_Content
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
@@ -47,7 +48,14 @@ def logout_view(request):
     return HttpResponseRedirect('/')
 
 def signup(request):
-    return HttpResponseRedirect('/')
+    if request.method == 'POST':
+        form = ContentForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/thankyou')
+    else: 
+        form = ContentForm()
+    return render(request, 'signup.html', {'form': form})
 
 def about(request):
     return render(request, "about.html", {'currentUser': request.user.username})
