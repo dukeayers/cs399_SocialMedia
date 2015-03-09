@@ -48,7 +48,9 @@ def logout_view(request):
     return HttpResponseRedirect('/')
 
 def signup(request):
-    if request.method == 'POST':
+    if request.user.is_authenticated():
+        return HttpResponseRedirect('/dashboard/')
+    elif request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()

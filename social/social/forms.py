@@ -12,6 +12,7 @@ class User_Content(forms.ModelForm):
         model = Content
         fields = ['url', 'description', 'image', 'username']
 
-class UserForm(UserCreationForm):
-    model = User
-    fields = ['username', 'email', 'password', 'first_name,', 'last_name']     
+class UserForm(UserCreationForm):  
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'first_name', 'last_name']
