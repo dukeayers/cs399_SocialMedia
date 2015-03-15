@@ -4,14 +4,14 @@
 
 To-Do
 -----
-- base.html body : Tsosie / ktaed
+
 --- footer with a copyright sentence and github link
 
 - Home page - random user posts generated here (currently just displays all posts in db)
 - Lots of user post dummy data
 
-- Tag database - predefined allowable tags for user posts
---- a way to search by tags
+- Tag database - a way to search by tags : Tsosie / ktaed
+
 --- when the user types in a tag, show a drop down of tag suggestions
 
 - About page - Nancy
