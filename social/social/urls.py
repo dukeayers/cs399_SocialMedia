@@ -11,5 +11,6 @@ urlpatterns = patterns('',
 	url(r'^new/', new_post),
 	url(r'^signup/', signup),
 	url(r'^about/', about),
+    url(r'^profile/', profile),
     url(r'^admin/', include(admin.site.urls)),
 )

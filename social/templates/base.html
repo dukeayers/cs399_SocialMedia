@@ -39,7 +39,7 @@
       <ul class="nav navbar-nav pull-right" >
           <li><a style="cursor:default; color:white; padding-top:20px !important;">
 		  {% if currentUser != '' %}
-			Welcome, {{ currentUser}}!
+		<span style="cursor:pointer;" onclick="window.location.href = '/profile'">Welcome, {{ currentUser}}!</span>
 		  {%endif%}
 		  </a></li>
           

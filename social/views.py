@@ -61,3 +61,6 @@ def signup(request):
 
 def about(request):
     return render(request, "about.html", {'currentUser': request.user.username})
+
+def profile(request):
+    return render(request, "about.html", {'currentUser': request.user.username})
