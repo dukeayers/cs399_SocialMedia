@@ -63,4 +63,4 @@ def about(request):
     return render(request, "about.html", {'currentUser': request.user.username})
 
 def profile(request):
-    return render(request, "about.html", {'currentUser': request.user.username})
+    return render(request, "profile.html", {'currentUser': request.user.username, 'person': User.objects.get(username = request.user.username ), "posts":Content.objects.filter(username = request.user.username ).order_by('datetime')})
