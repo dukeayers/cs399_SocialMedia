@@ -3,12 +3,14 @@
 
 {% endblock %}
 {% block content %}
-	{% for post in posts %}
-		<a href={{post.url}}><img src={{ post.image }} width= 300 height=200></a>
-		<br>
-		{{ post.description }}
-		<br>
-		{{ post.username }} on {{ post.datetime }}
-		<br><br><br>
+    <div class="row">
+    {% for post in posts %}
+        <div class="col-xs-4">
+            <a href={{post.url}}><img src="{{ post.image }}" class="img-responsive"></a>
+            <h5>{{ post.description }}</h5>
+            <h6 style="font-weight:bold;">{{ post.username }} on {{ post.datetime }}</h6>
+
+        </div>
 	{% endfor %}
+    </div>
 {% endblock %}
