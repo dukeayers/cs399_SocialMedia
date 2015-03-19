@@ -8,9 +8,11 @@ class User_Content(forms.ModelForm):
     description = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'required': 'required', 'placeholder': 'Description'}))
     image = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'required': 'required', 'placeholder': 'Image URL'}))
     username = forms.CharField(widget=forms.HiddenInput())
+    tags = forms.TextInput(attrs={'class': 'form-control', 'placeholder': 'Separate Tags by a Comma'})
+
     class Meta:
         model = Content
-        fields = ['url', 'description', 'image', 'username']
+        fields = ['url', 'description', 'image', 'username', 'tags']
 
 class UserForm(UserCreationForm):  
     class Meta:
