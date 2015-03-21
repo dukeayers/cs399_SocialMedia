@@ -10,6 +10,14 @@
             <h5>{{ post.description }}</h5>
             <h6 style="font-weight:bold;">{{ post.username }} on {{ post.datetime }}</h6>
 
+            <h6 style="font-weight:bold;"> tags: 
+              {% for tag in post.tags.all %}
+              {{ tag.name }}
+              {% empty %}
+                None
+              {% endfor %}
+            </h6>
+
         </div>
 	{% endfor %}
     </div>
