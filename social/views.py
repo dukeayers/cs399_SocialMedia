@@ -8,6 +8,7 @@ from social.forms import User_Content, UserForm
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+
 def splash(request):
     error = ""
     if request.method == 'POST':
@@ -26,7 +27,7 @@ def splash(request):
 
 @login_required(login_url='/')
 def dashboard(request):
-    return render(request, "index.html", {'posts': Content.objects.all(), 'currentUser': request.user.username})
+    return render(request, "index.html", {'posts': Content.objects.order_by('?').all(), 'currentUser': request.user.username})
 
 @login_required(login_url='/')
 def new_post(request):
