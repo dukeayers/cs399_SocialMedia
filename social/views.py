@@ -55,7 +55,7 @@ def signup(request):
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/thankyou')
+            return HttpResponseRedirect('/')
     else: 
         form = UserForm()
     return render(request, 'signup.html', {'form': form})
