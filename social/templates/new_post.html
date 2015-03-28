@@ -4,8 +4,6 @@
 {% block title %} New Post {% endblock %}
 {% endblock %}
 {% block content %}
-
-
     <div class="container" style="background:white; ">
     <h2>New Post</h2>
     <div class="row" style="padding-right:15px !important;">
@@ -22,11 +20,13 @@
     
 {% endblock %}
 
-
 {% block js %}
-	
+    $(".form-horizontal").submit(function(event){
+            var toLower = $('#id_tags').val().toLowerCase();
+            $('#id_tags').val(toLower);
+        });
+
 	$(document).ready(function() {
 		$(id_username).val( "{{ currentUser }}" );
 	});
-	
 {% endblock %}
