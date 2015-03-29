@@ -27,7 +27,18 @@ def splash(request):
 
 @login_required(login_url='/')
 def dashboard(request):
-    return render(request, "index.html", {'posts': Content.objects.order_by('?').all(), 'currentUser': request.user.username})
+    if len(request.GET)==0:
+        return render(request, "index.html", {'posts': Content.objects.order_by('?').all(), 'currentUser': request.user.username})
+    else:
+        searchFilter = request.GET['searchFilter']
+        if searchFilter=='tag':
+            searchFor = request.GET['searchFor']
+            searchFor = [x.lower() for x in [searchFor]]
+            searchFor =searchFor[0].split()
+            return render(request, "index.html", {'posts': Content.objects.filter(tags__name__in=searchFor).distinct(), 'currentUser': request.user.username})
+
+        # Just here until other cases are implemented
+        return render(request, "index.html", {'posts': Content.objects.order_by('?').all(), 'currentUser': request.user.username})
 
 @login_required(login_url='/')
 def new_post(request):
