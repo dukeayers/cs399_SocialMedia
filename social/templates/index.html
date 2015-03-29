@@ -12,7 +12,11 @@
 
             <h6 style="font-weight:bold;"> tags: 
               {% for tag in post.tags.all %}
-              {{ tag.name }}
+				{% if forloop.counter != post.tags.all|length %}
+					{{ tag.name }},
+				{%else %}
+					{{ tag.name }}
+				{% endif %}
               {% empty %}
                 None
               {% endfor %}
