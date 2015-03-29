@@ -10,7 +10,6 @@ To-Do
 - Home page - random user posts generated here (currently just displays all posts in db)
 - Lots of user post dummy data
 
-- Tag database - a way to search by tags : Tsosie / ktaed
 
 --- when the user types in a tag, show a drop down of tag suggestions
 
@@ -28,3 +27,4 @@ Complete
 - User post database and form: Nancy
 - Nav-bar: Duke
 - New post page - takes what the user inputs and stores it in the database: Nancy 
+- Tag database - a way to search by tags : Tsosie / ktaed
