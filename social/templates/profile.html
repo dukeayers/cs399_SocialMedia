@@ -21,7 +21,7 @@
 
     <hr/>
     <div class="row">
-        {% for post in posts %}
+        {% for post in posts reversed %}
             <div class="col-xs-4 text-center posts" data-filter="{{ post.datetime }} {{ post.description }} {{ post.url }} {{ post.image }} ">
                 <img src="{{ post.image }}" class="img-responsive" onclick="window.location.href='{{ post.url }}'" alt=""/>
                 <h5>{{ post.description }}</h5>
