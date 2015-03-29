@@ -4,21 +4,23 @@
 
 To-Do
 -----
-
+- Index
 --- footer with a copyright sentence and github link
-
-- Home page - random user posts generated here (currently just displays all posts in db)
-- Lots of user post dummy data
-
-
---- when the user types in a tag, show a drop down of tag suggestions
+--- Lots of user post dummy data - everybody add some!
+--- Optional: when the user types in a tag, show a drop down of tag suggestions
+--- Optional: 20 posts per page, use bootstrap pages
 
 - About page - Nancy
-- Create new account page / Mohammad
---- input account data into database
+
 - Settings page
 --- settings page needs to edit the database
-- User profile page - show all posts of the user sorted by date
+--- edit profile 
+--- Optional: edit posts
+
+- User profile page
+--- Ability to add user profile pic (currently placeholder)
+
+- Optional: Message system - Duke (?) 
 
 Complete
 --------
@@ -28,3 +30,6 @@ Complete
 - Nav-bar: Duke
 - New post page - takes what the user inputs and stores it in the database: Nancy 
 - Tag database - a way to search by tags : Tsosie / ktaed
+- Create new account page / Mohammad
+--- input account data into database
+- show all posts of the user sorted by date : Duke
