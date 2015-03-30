@@ -10,7 +10,7 @@ To-Do
 --- Optional: when the user types in a tag, show a drop down of tag suggestions
 --- Optional: 20 posts per page, use bootstrap pages
 
-- About page - Nancy
+- About page: everyone add a 150x150 picture for yourself
 
 - Settings page
 --- settings page needs to edit the database
@@ -33,3 +33,4 @@ Complete
 - Create new account page / Mohammad
 --- input account data into database
 - show all posts of the user sorted by date : Duke
+- About page - Nancy
