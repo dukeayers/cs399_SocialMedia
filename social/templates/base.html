@@ -78,12 +78,25 @@
                 document.forms[0].submit();
             }
         }
+    $(document).ready(function () {
+        $('#id_searchFor').on('input', function () {
+            var input = $(this).val().toLowerCase();
+            $('.posts').each(function () {
+                var value = $(this).attr('data-filter').toLowerCase();
+                if (value.indexOf(input) >= 0) {
+                    $(this).removeClass('hide');
+                } else {
+                    $(this).addClass('hide');
+                }
+            });
+        });
 
         {% block js %}
 
 
 {#            Any JavaScript specific to this page will come here.  #}
         {% endblock %}
+    });
     </script>
 </body>
 

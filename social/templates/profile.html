@@ -33,7 +33,6 @@
 
 {% endblock %}
 {% block js %}
-    $(document).ready(function () {
         $('#postFilter').on('input', function () {
             var input = $(this).val().toLowerCase();
             $('.posts').each(function () {
@@ -45,5 +44,4 @@
                 }
             });
         })
-    });
 {% endblock %}
