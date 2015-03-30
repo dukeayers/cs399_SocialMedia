@@ -5,20 +5,19 @@
 To-Do
 -----
 - Index
---- footer with a copyright sentence and github link
---- Lots of user post dummy data - everybody add some!
---- Optional: when the user types in a tag, show a drop down of tag suggestions
---- Optional: 20 posts per page, use bootstrap pages
+  - Lots of user post dummy data - everybody add some!
+  - Optional: when the user types in a tag, show a drop down of tag suggestions
+  - Optional: 20 posts per page, use bootstrap pages (paginator?)
 
 - About page: everyone add a 150x150 picture for yourself
 
 - Settings page
---- settings page needs to edit the database
---- edit profile 
---- Optional: edit posts
+  - settings page needs to edit the database
+  - edit profile 
+  - Optional: edit posts
 
 - User profile page
---- Ability to add user profile pic (currently placeholder)
+  - Ability to add user profile pic (currently placeholder)
 
 - Optional: Message system - Duke (?) 
 
@@ -34,3 +33,4 @@ Complete
 --- input account data into database
 - show all posts of the user sorted by date : Duke
 - About page - Nancy
+--- footer with a copyright sentence and github link - Nancy
