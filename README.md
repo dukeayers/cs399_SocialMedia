@@ -4,9 +4,11 @@
 
 To-Do
 -----
+- Important
+  - Ability to "pin" a post from another user to your own page
+  
 - Index
   - Lots of user post dummy data - everybody add some!
-  - Optional: when the user types in a tag, show a drop down of tag suggestions
   - Optional: 20 posts per page, use bootstrap pages (paginator?)
 
 - About page: everyone add a 150x150 picture for yourself
