@@ -5,6 +5,7 @@ from taggit_serializer.serializers import (TagListSerializerField,
 
 class ContentSerializer(serializers.ModelSerializer):
     tags = TagListSerializerField()
+    datetime = serializers.DateTimeField(format='%m-%d-%Y')
     class Meta:
         model = Content
         fields = ('url', 'description', 'username', 'datetime', 'image', 'tags')

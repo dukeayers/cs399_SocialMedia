@@ -5,30 +5,31 @@
 {% block content %}
     <div class="row allPosts">
     </div>
+    {% verbatim %}
+        <script id="post_template" type="text/template">
+            <div class="col-xs-4 posts">
+                <a href="{{ url }}">
+                    <img src="{{ image }}" class="img-responsive" alt=""/>
+                </a>
+                <h5>{{ description }}</h5>
+                <h6>{{ username }} on {{ datetime}}</h6>
+                <h6 style="font-weight: bold;">tags: {{ tags }}</h6>
+            </div>
+        </script>
+    {% endverbatim %}
 {% endblock %}
 {% block js %}
-            $(document).ready(function(){
-            $.get('/content/', function(data){
-                if(data != null || data != ''){
-                    $.each(data, function(key,val){
-                        var data = "<div class='col-xs-4 posts' data-filter=''>";
-                        data += "<a href='"+ val.url +"'>";
-                        data += "<img class='img-responsive' src='"+ val.image +"'/></a>";
-                        data += "<h5>" + val.description + "</h5>";
-                        data += "<h6>" + val.username + " on " + val.datetime + "</h6>";
-                        data += "<h6 style='font-weight:bold;'> tags: ";
-                        for(var i = 0; i < val.tags.length; i++){
-                            data += val.tags[i]
-                        }
-                        data += "</div>";
-                        $('.allPosts').append(data);
-                    })
-                }
-                else{
-                    $('.allPosts').append("<h1>Sorry, there are currently no posts!</h1>");
-                }
+        $(document).ready(function(){
+            $.getJSON('/content/', function(data){
+                $.each(data, function(key,val){
+                    var data1 = val.url;
+                    var template = $('#post_template').html();
+                    var html = Mustache.to_html(template, val);
+                    $('.allPosts').append(html);
+               })
             })
         })
+
 
 
 {% endblock %}
