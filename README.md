@@ -13,7 +13,7 @@ To-Do
 
 - About page: everyone add a 150x150 picture for yourself
 
-- Settings page
+- Settings page: Remove from navbar if nobody has time to do
   - settings page needs to edit the database
   - edit profile 
   - Optional: edit posts
