@@ -15,6 +15,5 @@ urlpatterns = patterns('',
 	url(r'^signup/', signup),
 	url(r'^about/', about),
     url(r'^profile/', profile),
-	url(r'^settings/', settings),
     url(r'^admin/', include(admin.site.urls)),
 )

@@ -90,10 +90,6 @@ def signup(request):
         form = UserForm()
     return render(request, 'signup.html', {'form': form})
 
-@login_required(login_url='/')
-def settings(request):
-	return render(request, "settings.html", {'currentUser': request.user.username});
-	
 def about(request):
     return render(request, "about.html", {'currentUser': request.user.username})
 

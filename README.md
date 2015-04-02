@@ -21,8 +21,6 @@ To-Do
 - User profile page
   - Ability to add user profile pic (currently placeholder)
 
-- Optional: Message system - Duke (?) 
-
 Complete
 --------
 - User login system: Duke
