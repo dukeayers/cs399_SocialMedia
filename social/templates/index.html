@@ -3,30 +3,32 @@
 
 {% endblock %}
 {% block content %}
-    <div class="row">
-    {% for post in posts %}
-        <div class="col-xs-4 posts" data-filter="{{ post.datetime }} {{ post.description }} {{ post.url }} {{ post.image }} ">
-            <a href={{post.url}}><img src="{{ post.image }}" class="img-responsive"></a>
-            <h5>{{ post.description }}</h5>
-            <h6 style="font-weight:bold;">{{ post.username }} on {{ post.datetime }}</h6>
-
-            <h6 style="font-weight:bold;"> tags: 
-              {% for tag in post.tags.all %}
-				{% if forloop.counter != post.tags.all|length %}
-					{{ tag.name }},
-				{%else %}
-					{{ tag.name }}
-				{% endif %}
-              {% empty %}
-                None
-              {% endfor %}
-            </h6>
-
-        </div>
-	{% empty %}
-		<h1>No posts to display.</h1>
-	{% endfor %}
+    <div class="row allPosts">
     </div>
 {% endblock %}
 {% block js %}
+            $(document).ready(function(){
+            $.get('/content/', function(data){
+                if(data != null || data != ''){
+                    $.each(data, function(key,val){
+                        var data = "<div class='col-xs-4 posts' data-filter=''>";
+                        data += "<a href='"+ val.url +"'>";
+                        data += "<img class='img-responsive' src='"+ val.image +"'/></a>";
+                        data += "<h5>" + val.description + "</h5>";
+                        data += "<h6>" + val.username + " on " + val.datetime + "</h6>";
+                        data += "<h6 style='font-weight:bold;'> tags: ";
+                        for(var i = 0; i < val.tags.length; i++){
+                            data += val.tags[i]
+                        }
+                        data += "</div>";
+                        $('.allPosts').append(data);
+                    })
+                }
+                else{
+                    $('.allPosts').append("<h1>Sorry, there are currently no posts!</h1>");
+                }
+            })
+        })
+
+
 {% endblock %}

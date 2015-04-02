@@ -39,7 +39,10 @@ INSTALLED_APPS = (
     'social',
     'bootstrap3',
     'taggit',
+    'rest_framework',
+    'taggit_serializer',
 )
+
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

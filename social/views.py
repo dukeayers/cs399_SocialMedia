@@ -5,14 +5,33 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from social.models import Content
 from social.forms import User_Content, UserForm
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
+from rest_framework import viewsets
+from serializers import ContentSerializer
+from rest_framework.renderers import JSONRenderer
+
+class JSONResponse(HttpResponse):
+    """
+    An HttpResponse that renders its content into JSON.
+    """
+    def __init__(self, data, **kwargs):
+        content = JSONRenderer().render(data)
+        kwargs['content_type'] = 'application/json'
+        super(JSONResponse, self).__init__(content, **kwargs)
+
+@csrf_exempt
+def content(request):
+    if request.method == 'GET':
+        content1 = Content.objects.order_by('?').all()
+        serializer = ContentSerializer(content1, many=True)
+        return JSONResponse(serializer.data)
 
 def splash(request):
     error = ""
     if request.method == 'POST':
-        # form = UserLogin(request.POST)
         username = request.POST['username']
         password = request.POST['password']
         print(password)
@@ -28,7 +47,7 @@ def splash(request):
 @login_required(login_url='/')
 def dashboard(request):
     if len(request.GET)==0:
-        return render(request, "index.html", {'posts': Content.objects.order_by('?').all(), 'currentUser': request.user.username})
+        return render(request, "index.html", {'currentUser': request.user.username})
     else:
         searchFilter = request.GET['searchFilter']
         if searchFilter=='tag':
