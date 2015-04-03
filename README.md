@@ -7,7 +7,7 @@ To-Do
 - Fix Tags?
 
 - Important
-  - Ability to "pin" a post from another user to your own page
+  - Ability to "pin" a post from another user to your own page / Mohammad
   
 - Index
   - Lots of user post dummy data - everybody add some!
@@ -28,6 +28,7 @@ To-Do
 
 Complete
 --------
+- Ability to "pin" a post from another user to your own page / Mohammad
 - Home page - random user posts generated here (currently just displays all posts in db) - Mohammad
 - fully functional signup page -- Mohammad
 - User login system: Duke
