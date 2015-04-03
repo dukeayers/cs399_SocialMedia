@@ -12,7 +12,7 @@
                     <img src="{{ image }}" class="img-responsive" alt=""/>
                 </a>
                 <h5>{{ description }}</h5>
-                <h6>{{ username }} on {{ datetime}}</h6>
+                <h6><a href="/users/{{ username }}">{{ username }}</a> on {{ datetime}}</h6>
                 <h6 style="font-weight: bold;">tags: {{ tags }}</h6>
                 <button class="pin" data-pk="{{  pk  }}">PIN
                 </button>

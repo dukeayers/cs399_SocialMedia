@@ -1,0 +1,58 @@
+{%  extends "base.html" %}
+{% block page_style %}
+{% block title %} Profile {% endblock %}
+{% endblock %}
+{% block content %}
+    <div class="row">
+    {% if person %}
+        <div class="col-xs-4 col-xs-offset-4 text-center">
+			{% if  pic %}
+				<a href="/userpic"><img src="{{ pic.url }}" class="img-responsive center-block" alt="" /></a>
+			{% else %}
+				<a href="/userpic"><img src='{{STATIC_URL}}icon.png' class="img-responsive center-block" alt=""/></a>
+			{% endif %}
+			<h2 style="font-weight:bold; display: inline; padding-left: 15px;">{{ person.username }}</h2>
+		</div>
+    </div>
+    <hr/>
+    <h3 class="text-center" style="font-weight:bold;">Latest Posts</h3>
+    <div class="row">
+        <div class="col-xs-offset-4 col-xs-4">
+            <input type="text"  placeholder="Filter Posts..." id="postFilter" class="form-control text-center"/>
+        </div>
+    </div>
+
+    <hr/>
+    <div class="row">
+        {% for post in posts reversed %}
+            <div class="col-xs-4 text-center posts" data-filter="{{ post.datetime }} {{ post.description }} {{ post.url }} {{ post.image }} ">
+                <img src="{{ post.image }}" class="img-responsive" onclick="window.location.href='{{ post.url }}'" alt=""/>
+                <h5>{{ post.description }}</h5>
+                <h6 style="font-weight:bold;">Posted: {{ post.datetime }} </h6>
+            </div>
+
+        {% endfor %}
+        {% else %}
+        <div class="col-xs-12 text-center">
+            <h1>404 User's Awesomeness Does Not Exist!</h1>
+        <h3>Uh Oh! It appears this person is not actually a person but really a figment of your imagination.</h3>
+        <a class="btn btn-primary btn-lg" href="/dashboard" style="width:50%;">Back to Dashboard</a>
+        </div>
+    {% endif %}
+    </div>
+
+{% endblock %}
+{% block js %}
+        $('#postFilter').on('input', function () {
+            var input = $(this).val().toLowerCase();
+            $('.posts').each(function () {
+                var value = $(this).attr('data-filter').toLowerCase();
+                if (value.indexOf(input) >= 0) {
+                    $(this).removeClass('hide');
+                } else {
+                    $(this).addClass('hide');
+                }
+            });
+        })
+		
+{% endblock %}

@@ -18,4 +18,5 @@ urlpatterns = patterns('',
 	url(r'^userpic/', userpic),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^pin/', pin),
+    url(r'^users/(?P<username>.*)', users)
 )

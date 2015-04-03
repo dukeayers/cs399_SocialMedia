@@ -124,6 +124,18 @@ def userpic(request):
         form = User_pic_form()
         return render(request, 'userpic.html', {'form': form, 'currentUser': request.user.username})
 
+def users(request, username):
+    try:
+        pic = UserPic.objects.get(username = username)
+    except UserPic.DoesNotExist:
+        pic = None
+    try:
+        person = User.objects.get(username = username)
+    except User.DoesNotExist:
+        person = None
+    return render(request,'users.html', {'person': person ,'pic': pic, "posts":Content.objects.filter(username = username ).order_by('datetime')[:5]})
+
+
 @login_required(login_url='/')
 def profile(request):
     try:

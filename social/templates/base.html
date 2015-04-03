@@ -58,14 +58,18 @@
 
       </ul>
 </nav>
-<div class="container">
+<div class="container pageContent">
 {% block content %}
 {#        Any content specific to the base page (i.e. a navbar, footer, sidebar) should go in this area. #}
 
 {% endblock %}
 </div>
 
-<div class="container">
+<div class="container placeFooter" style="  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  bottom: 0;">
   <div class="row text-center footer container" style="background:#2c3e50; color:white;">
      <p style="margin-top:20px; margin-bottom:20px; font-family: 'Open Sans', sans-serif !important; ">Copyright &copy; 2015 Good Game. All Rights Reserved. Proudly Powered by GG design team. <a href="https://github.com/dukeayers/cs399_SocialMedia" style="color: grey;">Our Github</a></p>
   </div>
@@ -87,6 +91,10 @@
             }
         }
     $(document).ready(function () {
+    $(window).scroll(function(){
+        $('.placeFooter').css({top: $(window).height()});
+    })
+
         $('#id_searchFor').on('input', function () {
             var input = $(this).val().toLowerCase();
             $('.posts').each(function () {
