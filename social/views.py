@@ -118,6 +118,10 @@ def signup(request):
     return render(request, 'signup.html', {'navigation': navigation, 'form': form})
 
 def about(request):
+    if request.user.is_authenticated():
+        navigation = True
+    else:
+        navigation = False
     return render(request, "about.html", {'currentUser': request.user.username, 'navigation': navigation})
 
 @login_required(login_url='/')
