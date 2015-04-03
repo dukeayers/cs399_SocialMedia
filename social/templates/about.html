@@ -1,7 +1,82 @@
 {%  extends "base.html" %}
+{% block css_links %}
+	<link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Slabo+27px' rel='stylesheet' type='text/css'>
+{% endblock %}
 {% block page_style %}
+{% block title %} About {% endblock %}
+
+.custom-image{
+        background-image: url( ' {{STATIC_URL}}about_pic.jpg ');
+		height: 50%;
+		background-size: 100% auto;
+    }
+h1{
+	font-size: 5em;
+	color: #FFFFFF;
+	font-family: 'Comfortaa', cursive;
+	padding-top: 300px;
+	}
+h2{
+	font-size: 3em;
+	font-family: 'Comfortaa', cursive;
+}
+h3{
+	font-family: 'Slabo 27px', serif;
+	
+}
 
 {% endblock %}
 {% block content %}
-	<h2> About </h2>
+	<div class="row ">
+	    <div class="col-xs-12 custom-image">
+			<h1 class="text-center">All about the games.</h1>
+			<p style="font-size: .9em; color: FFFFFF; text-align: right; padding-top: 30px;">
+				<span class="glyphicon glyphicon-copyright-mark" style="color:#FFFFFF;">
+				</span> Riot Games</p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<h2>Discover new games and celebrate your faves!</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-xs-2"></div>
+		<div class="col-xs-8 text-center well">
+			<h3>Good Game is the leading source for video game news, trailers, macros, and more. 
+			It's all your video game needs in one place! Get started by browsing tags and posting some of your own favorite gaming material!</h3>
+		</div>
+	</div>
+	<br><br><br>
+	<div class="row">
+		<div class="col-xs-12 text-center">
+			<h2>Our team</h2>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-2 text-center">
+			<img src="{{STATIC_URL}}nancy.png" class="img-circle" style="height: 150px; width: 150px;">
+			<h3>Nancy McCollough</h3>
+		</div>
+		<div class="col-xs-2 text-center">
+			<img src="{{STATIC_URL}}nancy.png" class="img-circle" style="height: 150px; width: 150px;">
+			<h3>Mohammad Alotaibimo</h3>
+		</div>
+		<div class="col-xs-2 text-center">
+			<img src="{{STATIC_URL}}nancy.png" class="img-circle" style="height: 150px; width: 150px;">
+			<h3>Duke <br>Ayers</h3>
+		</div>
+		<div class="col-xs-2 text-center">
+			<img src="{{STATIC_URL}}nancy.png" class="img-circle" style="height: 150px; width: 150px;">
+			<h3>David <br>Miller</h3>
+		</div>
+		<div class="col-xs-2 text-center">
+			<img src="{{STATIC_URL}}nancy.png" class="img-circle" style="height: 150px; width: 150px;">
+			<h3>Tsosie <br>Schneider</h3>
+		</div>
+		
+	</div>
 {% endblock %}

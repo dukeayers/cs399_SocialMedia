@@ -1,24 +1,35 @@
 {%  extends "base.html" %}
 {% block page_style %}
-
+{% block title %} Dashboard {% endblock %}
 {% endblock %}
 {% block content %}
-    <div class="row">
-    {% for post in posts %}
-        <div class="col-xs-4">
-            <a href={{post.url}}><img src="{{ post.image }}" class="img-responsive"></a>
-            <h5>{{ post.description }}</h5>
-            <h6 style="font-weight:bold;">{{ post.username }} on {{ post.datetime }}</h6>
-
-            <h6 style="font-weight:bold;"> tags: 
-              {% for tag in post.tags.all %}
-              {{ tag.name }}
-              {% empty %}
-                None
-              {% endfor %}
-            </h6>
-
-        </div>
-	{% endfor %}
+    <div class="row allPosts">
     </div>
+    {% verbatim %}
+        <script id="post_template" type="text/template">
+            <div class="col-xs-4 pull-left posts" data-filter="{{ url }} {{ image }} {{ description }} {{ username }} {{ datetime }} {{ tags }}">
+                <a href="{{ url }}">
+                    <img src="{{ image }}" class="img-responsive" alt=""/>
+                </a>
+                <h5>{{ description }}</h5>
+                <h6>{{ username }} on {{ datetime}}</h6>
+                <h6 style="font-weight: bold;">tags: {{ tags }}</h6>
+            </div>
+        </script>
+    {% endverbatim %}
+{% endblock %}
+{% block js %}
+        $(document).ready(function(){
+            $.getJSON('/content/', function(data){
+                $.each(data, function(key,val){
+                    var data1 = val.url;
+                    var template = $('#post_template').html();
+                    var html = Mustache.to_html(template, val);
+                    $('.allPosts').append(html);
+               })
+            })
+        })
+
+
+
 {% endblock %}

@@ -4,8 +4,14 @@
 
 To-Do
 -----
+- Fix Tags?
 
---- footer with a copyright sentence and github link
+- Important
+  - Ability to "pin" a post from another user to your own page
+  
+- Index
+  - Lots of user post dummy data - everybody add some!
+  - Optional: 20 posts per page, use bootstrap pages (paginator?)
 
 
 - Lots of user post dummy data
@@ -29,3 +35,11 @@ Complete
 - User post database and form: Nancy
 - Nav-bar: Duke
 - New post page - takes what the user inputs and stores it in the database: Nancy 
+- Tag database - a way to search by tags : Tsosie / ktaed
+- Create new account page / Mohammad
+--- input account data into database
+- show all posts of the user sorted by date : Duke
+- About page - Nancy
+--- footer with a copyright sentence and github link - Nancy
+- User profile page
+  - Ability to add user profile pic (currently placeholder) - Nancy

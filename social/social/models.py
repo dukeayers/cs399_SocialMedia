@@ -9,4 +9,8 @@ class Content(models.Model):
     username = models.CharField(max_length=30)
     datetime = models.DateTimeField(auto_now_add=True)
     image = models.URLField()
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
+	
+class UserPic(models.Model):
+	username = models.CharField(max_length=30)
+	url = models.URLField()
