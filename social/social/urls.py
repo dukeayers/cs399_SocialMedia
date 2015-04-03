@@ -17,4 +17,5 @@ urlpatterns = patterns('',
     url(r'^profile/', profile),
 	url(r'^userpic/', userpic),
     url(r'^admin/', include(admin.site.urls)),
+    url(r'^pin/', pin),
 )

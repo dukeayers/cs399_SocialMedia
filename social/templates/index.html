@@ -14,6 +14,8 @@
                 <h5>{{ description }}</h5>
                 <h6>{{ username }} on {{ datetime}}</h6>
                 <h6 style="font-weight: bold;">tags: {{ tags }}</h6>
+                <button class="pin" data-pk="{{  pk  }}">PIN
+                </button>
             </div>
         </script>
     {% endverbatim %}
@@ -26,9 +28,21 @@
                     var template = $('#post_template').html();
                     var html = Mustache.to_html(template, val);
                     $('.allPosts').append(html);
-               })
-            })
-        })
+               });
+            });
+            $(document).on('click', ".pin", function(e) { 
+                var $target = $(e.target);
+                var params={pk: $target.data("pk")};
+                $.post('/pin/', params, function(data) { 
+                    if(data.success == "true"){
+                        $target.text('PINNED').removeClass('pin').addClass('pinned');
+                    }
+
+                }, "json");
+
+            });
+
+        });
 
 
 

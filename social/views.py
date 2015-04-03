@@ -29,6 +29,22 @@ def content(request):
         serializer = ContentSerializer(content1, many=True)
         return JSONResponse(serializer.data)
 
+@csrf_exempt
+def pin(request):
+    content = Content.objects.get(pk=request.POST.get('pk'))
+    try: 
+        Content.objects.get(image = content.image, username = request.user.username)
+    except Content.DoesNotExist:
+        my_content = Content()
+        my_content.url = content.url
+        my_content.description = content.description
+        my_content.image = content.image
+        my_content.tags = content.tags
+        my_content.username = request.user.username
+        my_content.save()
+    response = {"success":"true"}
+    return JSONResponse(response)
+
 def splash(request):
     error = ""
     if request.method == 'POST':
