@@ -1,15 +1,18 @@
 {%  extends "base.html" %}
 {% block page_style %}
-
+{% block title %} Profile {% endblock %}
 {% endblock %}
 {% block content %}
     <div class="row">
-        <div class="col-xs-4 col-xs-offset-4">
-            <img src="http://placehold.it/350x150" class="img-responsive" alt=""/>
-        </div>
-        <div class="col-xs-12 text-center">
-            <h3 style="font-weight:bold;">Hello, {{ person.first_name }}!</h3>
-        </div>
+        <div class="col-xs-4">
+			{% if  pic %}
+				<a href="/userpic"><img src="{{ pic.url }}" class="img-responsive" alt="" style="width: 100px; height: 100px; display: inline;"/></a> 
+			{% else %}
+				<a href="/userpic"><img src='{{STATIC_URL}}icon.png' class="img-responsive" alt="" style="width: 100px; height: 100px; display: inline;"/></a> 
+			{% endif %}
+			<h2 style="font-weight:bold; display: inline; padding-left: 15px;">Hello, {{ person.first_name }}!</h2>
+
+		</div>
     </div>
     <hr/>
     <h3 class="text-center" style="font-weight:bold;">My Posts</h3>
@@ -44,4 +47,5 @@
                 }
             });
         })
+		
 {% endblock %}

@@ -110,4 +110,9 @@ def userpic(request):
 
 @login_required(login_url='/')
 def profile(request):
-    return render(request, "profile.html", {'currentUser': request.user.username, "pic":UserPic.objects.filter(username = request.user.username ), 'person': User.objects.get(username = request.user.username ), "posts":Content.objects.filter(username = request.user.username ).order_by('datetime')})
+    try:
+        pic = UserPic.objects.get(username = request.user.username)
+    except UserPic.DoesNotExist:
+        pic = None
+
+    return render(request, "profile.html", {'currentUser': request.user.username, 'pic': pic, 'person': User.objects.get(username = request.user.username ), "posts":Content.objects.filter(username = request.user.username ).order_by('datetime')})
