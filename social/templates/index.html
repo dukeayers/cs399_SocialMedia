@@ -7,7 +7,7 @@
     </div>
     {% verbatim %}
         <script id="post_template" type="text/template">
-            <div class="col-xs-4 pull-left posts" data-filter="{{ url }} {{ image }} {{ description }} {{ username }} {{ datetime }} {{ tags }}">
+            <div style="left: -1000px; display:none;" class="col-xs-4 pull-left posts" data-filter="{{ url }} {{ image }} {{ description }} {{ username }} {{ datetime }} {{ tags }}">
                 <a href="{{ url }}">
                     <img src="{{ image }}" class="img-responsive" alt=""/>
                 </a>
@@ -30,6 +30,12 @@
                     var html = Mustache.to_html(template, val);
                     $('.allPosts').append(html);
                });
+            }).then(function(){
+                $('.posts').show();
+                $('.posts').each(function(){
+                    $(this).animate({left: 0}, (Math.random() * 1000) + 2);
+                });
+                //$('.posts').animate({left: 0}, 1000);
             });
             $(document).on('click', ".pin", function(e) { 
                 var $target = $(e.target);
