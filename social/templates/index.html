@@ -1,5 +1,16 @@
 {%  extends "base.html" %}
 {% block page_style %}
+    .posts{
+    background: white;
+  padding: 10px 10px;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+    body{
+        background: #ecf0f1;
+    }
 {% block title %} Dashboard {% endblock %}
 {% endblock %}
 {% block content %}
@@ -7,7 +18,7 @@
     </div>
     {% verbatim %}
         <script id="post_template" type="text/template">
-            <div style="left: -1000px; display:none;" class="col-xs-4 pull-left posts" data-filter="{{ url }} {{ image }} {{ description }} {{ username }} {{ datetime }} {{ tags }}">
+            <div style="left: -1000px; display:none;" class="col-xs-3 col-xs-push-1  posts" data-filter="{{ url }} {{ image }} {{ description }} {{ username }} {{ datetime }} {{ tags }}">
                 <a href="{{ url }}">
                     <img src="{{ image }}" class="img-responsive" alt=""/>
                 </a>
@@ -33,9 +44,9 @@
             }).then(function(){
                 $('.posts').show();
                 $('.posts').each(function(){
-                    $(this).animate({left: 0}, (Math.random() * 1000) + 2);
+                    $(this).animate({left: "8.33%"}, (Math.random() * 1000) + 2);
                 });
-                //$('.posts').animate({left: 0}, 1000);
+                //$('.posts').animate({left: "8.33%"}, 1000);
             });
             $(document).on('click', ".pin", function(e) { 
                 var $target = $(e.target);
