@@ -60,8 +60,11 @@ def splash(request):
             error="Username/Password is not valid."
     return render(request, 'login.html', {'error': error})
 
-@login_required(login_url='/')
 def dashboard(request):
+    if request.user.is_authenticated():
+        navigation = True
+    else:
+        navigation = False
     if len(request.GET)==0:
         return render(request, "index.html", {'currentUser': request.user.username})
     else:
@@ -73,10 +76,14 @@ def dashboard(request):
             return render(request, "index.html", {'posts': Content.objects.filter(tags__name__in=searchFor).distinct(), 'currentUser': request.user.username})
 
         # Just here until other cases are implemented
-        return render(request, "index.html", {'posts': Content.objects.order_by('?').all(), 'currentUser': request.user.username})
+        return render(request, "index.html", {'navigation': navigation,'posts': Content.objects.order_by('?').all(), 'currentUser': request.user.username})
 
 @login_required(login_url='/')
 def new_post(request):
+    if request.user.is_authenticated():
+        navigation = True
+    else:
+        navigation = False
     if request.method == 'POST':
         # we need to process data
         form = User_Content(request.POST)
@@ -88,13 +95,17 @@ def new_post(request):
     else:
         # create blank form
         form = User_Content()
-        return render(request, 'new_post.html', {'form': form, 'currentUser': request.user.username})
+        return render(request, 'new_post.html', {'navigation': navigation,'form': form, 'currentUser': request.user.username})
 
 def logout_view(request):
     logout(request)
     return HttpResponseRedirect('/')
 
 def signup(request):
+    if request.user.is_authenticated():
+        navigation = True
+    else:
+        navigation = False
     if request.user.is_authenticated():
         return HttpResponseRedirect('/dashboard/')
     elif request.method == 'POST':
@@ -104,10 +115,10 @@ def signup(request):
             return HttpResponseRedirect('/')
     else: 
         form = User_form()
-    return render(request, 'signup.html', {'form': form})
+    return render(request, 'signup.html', {'navigation': navigation, 'form': form})
 
 def about(request):
-    return render(request, "about.html", {'currentUser': request.user.username})
+    return render(request, "about.html", {'currentUser': request.user.username, 'navigation': navigation})
 
 @login_required(login_url='/')
 def userpic(request):
@@ -125,6 +136,10 @@ def userpic(request):
         return render(request, 'userpic.html', {'form': form, 'currentUser': request.user.username})
 
 def users(request, username):
+    if request.user.is_authenticated():
+        navigation = True
+    else:
+        navigation = False
     try:
         pic = UserPic.objects.get(username = username)
     except UserPic.DoesNotExist:
@@ -133,14 +148,18 @@ def users(request, username):
         person = User.objects.get(username = username)
     except User.DoesNotExist:
         person = None
-    return render(request,'users.html', {'person': person ,'pic': pic, "posts":Content.objects.filter(username = username ).order_by('datetime')[:5]})
+    return render(request,'users.html', {'person': person , 'navigation': navigation, 'pic': pic, "posts":Content.objects.filter(username = username ).order_by('datetime')[:5]})
 
 
 @login_required(login_url='/')
 def profile(request):
+    if request.user.is_authenticated():
+        navigation = True
+    else:
+        navigation = False
     try:
         pic = UserPic.objects.get(username = request.user.username)
     except UserPic.DoesNotExist:
         pic = None
 
-    return render(request, "profile.html", {'currentUser': request.user.username, 'pic': pic, 'person': User.objects.get(username = request.user.username ), "posts":Content.objects.filter(username = request.user.username ).order_by('datetime')})
+    return render(request, "profile.html", {'currentUser': request.user.username, 'navigation': navigation, 'pic': pic, 'person': User.objects.get(username = request.user.username ), "posts":Content.objects.filter(username = request.user.username ).order_by('datetime')})

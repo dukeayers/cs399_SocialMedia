@@ -38,11 +38,13 @@
 
       <ul class="nav navbar-nav pull-right">
           <li><a style="cursor:default; color:white; padding-top:20px !important;">
+          {% if navigation %}
 		  {% if currentUser != '' %}
 		<span style="cursor:pointer;" onclick="window.location.href = '/profile'">Welcome, {{ currentUser}}!</span>
 		  {%endif%}
 		  </a></li>
-          
+           {% endif %}
+      {% if navigation %}
 		  <li><a href="/new" style="color:white !important; padding-top:20px !important;">New Post</a></li>
 		  <li class="dropdown">
           <a href="#" class="dropdown-toggle" id="navItemA" data-toggle="dropdown" role="button" aria-expanded="false" style="background:#2c3e50 !important;color:white !important; padding-top:20px !important;">Options <span class="caret"></span></a>
@@ -53,8 +55,11 @@
             <li><a href="#">View Messages</a></li>
           </ul>
         </li>
+       {%endif%}
 		<li><a href="/about" style="color:white !important; padding-top:20px !important;">About Us</a></li>
+      {% if navigation %}
         <li><a href="/logout" style="color:white !important; padding-top:20px !important;">Logout</a></li>
+      {% endif %}
 
       </ul>
 </nav>
