@@ -11,23 +11,10 @@ from django.core.urlresolvers import reverse
 from django.contrib.auth.decorators import login_required
 from rest_framework import viewsets
 from serializers import ContentSerializer
-from rest_framework.renderers import JSONRenderer
 
-class JSONResponse(HttpResponse):
-    """
-    An HttpResponse that renders its content into JSON.
-    """
-    def __init__(self, data, **kwargs):
-        content = JSONRenderer().render(data)
-        kwargs['content_type'] = 'application/json'
-        super(JSONResponse, self).__init__(content, **kwargs)
-
-@csrf_exempt
-def content(request):
-    if request.method == 'GET':
-        content1 = Content.objects.order_by('?').all()
-        serializer = ContentSerializer(content1, many=True)
-        return JSONResponse(serializer.data)
+class ContentViewSet(viewsets.ModelViewSet):
+    queryset = Content.objects.order_by('?').all()
+    serializer_class = ContentSerializer
 
 @csrf_exempt
 def pin(request):

@@ -23,7 +23,7 @@
 {% endblock %}
 {% block js %}
         $(document).ready(function(){
-            $.getJSON('/content/', function(data){
+            $.getJSON('/api/content', function(data){
                 $.each(data, function(key,val){
                     var data1 = val.url;
                     var template = $('#post_template').html();

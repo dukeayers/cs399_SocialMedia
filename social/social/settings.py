@@ -43,7 +43,12 @@ INSTALLED_APPS = (
     'rest_framework',
     'taggit_serializer',
 )
+REST_FRAMEWORK = {
 
+   'DEFAULT_PERMISSION_CLASSES': [
+       'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+   ]
+}
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
