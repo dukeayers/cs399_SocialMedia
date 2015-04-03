@@ -66,7 +66,7 @@ def dashboard(request):
     else:
         navigation = False
     if len(request.GET)==0:
-        return render(request, "index.html", {'currentUser': request.user.username})
+        return render(request, "index.html", {'navigation': navigation, 'currentUser': request.user.username})
     else:
         searchFilter = request.GET['searchFilter']
         if searchFilter=='tag':
