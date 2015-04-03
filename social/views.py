@@ -12,7 +12,7 @@ from django.contrib.auth.decorators import login_required
 from rest_framework import viewsets
 from rest_framework.renderers import JSONRenderer
 from serializers import ContentSerializer
-
+from rest_framework import permissions
 
 class JSONResponse(HttpResponse):
     """
@@ -27,6 +27,7 @@ class JSONResponse(HttpResponse):
 class ContentViewSet(viewsets.ModelViewSet):
     queryset = Content.objects.order_by('?').all()
     serializer_class = ContentSerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 
 
 @csrf_exempt
