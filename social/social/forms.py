@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User 
-from social.models import Content
+from social.models import Content, UserPic
 
 class User_Content(forms.ModelForm):
     url = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'required': 'required', 'placeholder': 'Website URL'}))
@@ -14,7 +14,16 @@ class User_Content(forms.ModelForm):
         model = Content
         fields = ['url', 'description', 'image', 'username', 'tags']
 
-class UserForm(UserCreationForm):  
+class User_form(UserCreationForm):  
     class Meta:
         model = User
         fields = ['username', 'email', 'first_name', 'last_name']
+
+class User_pic_form(forms.ModelForm):
+	username = forms.CharField(widget=forms.HiddenInput())
+	url = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control', 'required': 'required', 'placeholder': 'Picture URL'}))
+	
+	class Meta:
+		model = UserPic
+		fields = ['username', 'url']
+	

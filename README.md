@@ -4,6 +4,8 @@
 
 To-Do
 -----
+- Fix Tags?
+
 - Important
   - Ability to "pin" a post from another user to your own page
   
@@ -18,9 +20,6 @@ To-Do
   - edit profile 
   - Optional: edit posts
 
-- User profile page
-  - Ability to add user profile pic (currently placeholder)
-
 Complete
 --------
 - User login system: Duke
@@ -34,3 +33,5 @@ Complete
 - show all posts of the user sorted by date : Duke
 - About page - Nancy
 --- footer with a copyright sentence and github link - Nancy
+- User profile page
+  - Ability to add user profile pic (currently placeholder) - Nancy

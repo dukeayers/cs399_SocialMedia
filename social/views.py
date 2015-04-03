@@ -3,8 +3,8 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
-from social.models import Content
-from social.forms import User_Content, UserForm
+from social.models import Content, UserPic
+from social.forms import User_Content, User_form, User_pic_form
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import redirect
 from django.core.urlresolvers import reverse
@@ -82,16 +82,32 @@ def signup(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect('/dashboard/')
     elif request.method == 'POST':
-        form = UserForm(request.POST)
+        form = User_form(request.POST)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/')
     else: 
-        form = UserForm()
+        form = User_form()
     return render(request, 'signup.html', {'form': form})
 
 def about(request):
     return render(request, "about.html", {'currentUser': request.user.username})
 
+@login_required(login_url='/')
+def userpic(request):
+    if request.method == 'POST':
+        # we need to process data
+        form = User_pic_form(request.POST)
+        if(form.is_valid()):
+            form.save(commit = True)
+            return HttpResponseRedirect('/dashboard')
+        else:
+            return render(request, 'userpic.html', {'form': form, 'currentUser': request.user.username})
+    else:
+        # create blank form
+        form = User_pic_form()
+        return render(request, 'userpic.html', {'form': form, 'currentUser': request.user.username})
+
+@login_required(login_url='/')
 def profile(request):
-    return render(request, "profile.html", {'currentUser': request.user.username, 'person': User.objects.get(username = request.user.username ), "posts":Content.objects.filter(username = request.user.username ).order_by('datetime')})
+    return render(request, "profile.html", {'currentUser': request.user.username, "pic":UserPic.objects.filter(username = request.user.username ), 'person': User.objects.get(username = request.user.username ), "posts":Content.objects.filter(username = request.user.username ).order_by('datetime')})

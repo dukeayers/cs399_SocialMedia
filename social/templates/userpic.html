@@ -1,0 +1,33 @@
+{%  extends "base.html" %}
+{% block css_links %}
+	<link href='http://fonts.googleapis.com/css?family=Comfortaa' rel='stylesheet' type='text/css'>
+{% endblock %}
+{% block page_style %}
+
+h1{
+	font-size: 3em;
+	color: #000000;
+	font-family: 'Comfortaa', cursive;
+	padding-top: 300px;
+	}
+
+{% endblock %}
+{% block content %}
+			<h1>User Profile Pic</h1>
+                <form action="" method="post" class="form-horizontal">
+                    {% csrf_token %}
+                    {{ form }}
+                    <br>
+                    <input type="submit" value="Submit" class="btn btn-primary"/>
+                </form>
+
+
+{% endblock %}
+
+{% block js %}
+
+	$(document).ready(function() {
+		$(id_username).val( "{{ currentUser }}" );
+	});
+
+{% endblock %}
