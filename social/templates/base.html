@@ -57,6 +57,9 @@
         </li>
        {%endif%}
 		<li><a href="/about" style="color:white !important; padding-top:20px !important;">About Us</a></li>
+      {% if navigation == False %}
+      <li><a href="/signup" style="color:white !important; padding-top:20px !important;">Sign Up</a></li>
+      {% endif %}
       {% if navigation %}
         <li><a href="/logout" style="color:white !important; padding-top:20px !important;">Logout</a></li>
       {% endif %}
