@@ -152,7 +152,7 @@ def users(request, username):
         person = User.objects.get(username = username)
     except User.DoesNotExist:
         person = None
-    return render(request,'users.html', {'person': person , 'navigation': navigation, 'pic': pic, "posts":Content.objects.filter(username = username ).order_by('datetime')[:5]})
+    return render(request,'users.html', {'person': person , 'navigation': navigation, 'pic': pic,  'currentUser': request.user.username, "posts":Content.objects.filter(username = username ).order_by('datetime')[:5]})
 
 
 @login_required(login_url='/')
