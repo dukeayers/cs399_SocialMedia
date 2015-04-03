@@ -15,7 +15,12 @@
     {% endblock %}
 </head>
 <style>
-
+    .footer:hover{
+        opacity:1 !important;
+    }
+    body{
+        cursor:default;
+    }
     {% block page_style %}
 
     {% endblock %}
@@ -75,7 +80,7 @@
 </div>
 
 <div class="container placeFooter" style="  position: fixed; margin: 0 auto;left: 0;right: 0;bottom: 0;">
-  <div class="row text-center footer container" style="background:#2c3e50; color:white;">
+  <div class="row text-center footer container" style="background:rgb(44, 62, 80); opacity:0.4;  color:white;">
      <p style="margin-top:20px; margin-bottom:20px; font-family: 'Open Sans', sans-serif !important; ">Copyright &copy; 2015 Good Game. All Rights Reserved. Proudly Powered by GG design team. <a href="https://github.com/dukeayers/cs399_SocialMedia" style="color: grey;">Our Github</a></p>
   </div>
 </div>
@@ -96,7 +101,15 @@
             }
         }
     $(document).ready(function () {
+    $(window).scroll(function(){
+       if( ($('.footer').offset().top > $(window).height() - 100)){
+           $('.footer').animate({opacity: "1"}, 1000);
+       }
+        else{
+           $('.footer').css({opacity: "0.4"});
+       }
 
+    });
         $('#id_searchFor').on('input', function () {
             var input = $(this).val().toLowerCase();
             $('.posts').each(function () {
