@@ -24,14 +24,14 @@
  <div class="input-group col-sm-7 col-sm-offset-1 pull-left" style="padding-top:10px; padding-bottom:10px;">
           <span class="input-group-addon"><a href="/dashboard"><span class="glyphicon glyphicon-tower" style="color:#2c3e50;"></span></a></span>
           <input id="id_searchFor" name="searchFor" form="search" onkeypress="return search(event)" type="text" class="form-control" placeholder="Search..." aria-describedby="basic-addon1">
-          <div class="input-group-btn">
-               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Filter<span class="caret" style="margin-left:4px;"></span></button>
-                <ul class="dropdown-menu dropdown-menu-right" role="menu">
-                  <li><a href="javascript:setUser()">Users</a></li>
-                  <li><a href="javascript:setTag()">Tags</a></li>
-                  <li><a href="javascript:setGame()">Video Games</a></li>
-                </ul>
-            </div>
+{#          <div class="input-group-btn">#}
+{#               <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Filter<span class="caret" style="margin-left:4px;"></span></button>#}
+{#                <ul class="dropdown-menu dropdown-menu-right" role="menu">#}
+{#                  <li><a href="javascript:setUser()">Users</a></li>#}
+{#                  <li><a href="javascript:setTag()">Tags</a></li>#}
+{#                  <li><a href="javascript:setGame()">Video Games</a></li>#}
+{#                </ul>#}
+{#            </div>#}
            <form id="search" hidden="hidden" action="/dashboard" method="get"><input type="text" form="search" name="searchFilter"id="id_searchFilter" hidden="hidden"></form>
         </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -59,6 +59,7 @@
 		<li><a href="/about" style="color:white !important; padding-top:20px !important;">About Us</a></li>
       {% if navigation == False %}
       <li><a href="/signup" style="color:white !important; padding-top:20px !important;">Sign Up</a></li>
+       <li><a href="/" style="color:white !important; padding-top:20px !important;">Login</a></li>
       {% endif %}
       {% if navigation %}
         <li><a href="/logout" style="color:white !important; padding-top:20px !important;">Logout</a></li>
